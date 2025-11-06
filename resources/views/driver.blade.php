@@ -343,6 +343,10 @@
         font-size: 10px;
       }
     }
+  .small-img {
+    width: 250px;
+    height: auto;
+  }
 
   </style>
 </head>
@@ -374,6 +378,8 @@
      <li class="nav-item"><a class="nav-link" href="{{ route('services') }}">Services</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ route('driver') }}">Drivers</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ route('partner') }}">Partners</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ route('purchase') }}">Float Purchase</a></li>
+ <li class="nav-item"><a class="nav-link" href="{{ route('wallet-top-up') }}">Wallet Top Up</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
         </ul>
       </div>
@@ -392,28 +398,29 @@
       <div class="carousel-caption d-block caption-center">
         <h2>Become a Driver with Us</h2>
         <p>Join our growing network and start earning today!</p>
-        <button class="btn btn-warning" data-toggle="modal" data-target="#driverRegisterModal">Register Now</button>
+        <a href="https://play.google.com/store/apps/details?id=unkago.taxi.zambia.driver"  class="btn btn-warning" >Register Now</a>
       </div>
     </div>
 
-    <!-- Slide 2 -->
-    <div class="carousel-item">
-      <img src="images/driver2.jpg" class="d-block w-100" alt="Earn Money">
-      <div class="carousel-caption d-block caption-center">
-        <h2>Earn on Your Own Schedule</h2>
-        <p>Drive when it works best for you and boost your income.</p>
-        <button class="btn btn-warning" data-toggle="modal" data-target="#driverRegisterModal">Join Today</button>
-      </div>
-    </div>
+<!-- Slide 2 -->
+<div class="carousel-item">
+  <img src="images/driver2.jpg" class="d-block w-100" alt="Earn Money">
+  <div class="carousel-caption d-block caption-center">
+    <h2>Earn on Your Own Schedule</h2>
+    <p>Drive when it works best for you and boost your income.</p>
+    <a href="https://play.google.com/store/apps/details?id=unkago.taxi.zambia.driver" class="btn btn-warning">Join Today</a>
+  </div>
+</div>
 
-        <div class="carousel-item">
-      <img src="images/driver3.jpeg" class="d-block w-100" alt="Earn Money">
-      <div class="carousel-caption d-block caption-center">
-        <h2>Earn on Your Own Schedule</h2>
-        <p>Drive when it works best for you and boost your income.</p>
-        <button class="btn btn-warning" data-toggle="modal" data-target="#driverRegisterModal">Join Today</button>
-      </div>
-    </div>
+<div class="carousel-item">
+  <img src="images/driver3.jpeg" class="d-block w-100" alt="Earn Money">
+  <div class="carousel-caption d-block caption-center">
+    <h2>Earn on Your Own Schedule</h2>
+    <p>Drive when it works best for you and boost your income.</p>
+    <a href="https://play.google.com/store/apps/details?id=unkago.taxi.zambia.driver" class="btn btn-warning">Join Today</a>
+  </div>
+</div>
+
 
   </div>
 
@@ -515,7 +522,7 @@
   <div class="container">
     <h2 class="font-weight-bold">Ready to Start Driving?</h2>
     <p class="mb-4">Sign up today and join hundreds of drivers already earning with Unka.</p>
-    <button class="btn btn-light btn-lg" data-toggle="modal" data-target="#driverRegisterModal">Register Now</button>
+    <a href="https://play.google.com/store/apps/details?id=unkago.taxi.zambia.driver" class="btn btn-light btn-lg" >Register Now</a>
   </div>
 </section>
 
@@ -570,7 +577,8 @@
 </div>
 
 <!-- Driver App Section -->
-<section class="app_section layout_padding2" style="background: #f9f9f9; padding: 60px 0;"> <div class="container"> <div class="row align-items-center"> <!-- Left Side: Driver App Info --> <div class="col-md-6"> <div class="detail-box"> <h2 style="font-size: 2.2rem; margin-bottom: 20px; font-weight: 700; color: #333;"> Download the <span style="color: #ff6600;">Unka Driver App</span> </h2> <div class="text-box" style="margin-bottom: 20px;"> <h5 style="font-size: 1.3rem; color: #ff6600; margin-bottom: 10px;"> 🚚 How to Download </h5> <p style="color: #555; line-height: 1.6;"> Get our driver app from your preferred store. Just click the Play Store or App Store icon, download, install, and you’re ready to start delivering. </p> </div> <div class="text-box" style="margin-bottom: 30px;"> <h5 style="font-size: 1.3rem; color: #ff6600; margin-bottom: 10px;"> ⚙️ How It Works </h5> <p style="color: #555; line-height: 1.6;"> Open the app, register as a driver, and start accepting delivery requests. Track trips, earnings, and manage your account—all from your phone. </p> </div> <div class="btn-box" style="display: flex; gap: 15px;"> <a href="#" target="_blank"> <img src="images/playstore.png" alt="Download on Play Store" style="height: 55px;"> </a> <a href="#" target="_blank"> <img src="images/appstore.png" alt="Download on App Store" style="height: 55px;"> </a> </div> </div> </div> <div class="col-md-6"> <div class="img-box"> <img src="images/mobile.png" alt=""> </div> </div> </div> </div> </section>
+<section class="app_section layout_padding2" style="background: #f9f9f9; padding: 60px 0;"> <div class="container"> <div class="row align-items-center"> <!-- Left Side: Driver App Info --> 
+  <div class="col-md-6"> <div class="detail-box"> <h2 style="font-size: 2.2rem; margin-bottom: 20px; font-weight: 700; color: #333;"> Download the <span style="color: #ff6600;">Unka Driver App</span> </h2> <div class="text-box" style="margin-bottom: 20px;"> <h5 style="font-size: 1.3rem; color: #ff6600; margin-bottom: 10px;"> 🚚 How to Download </h5> <p style="color: #555; line-height: 1.6;"> Get our driver app from your preferred store. Just click the Play Store or App Store icon, download, install, and you’re ready to start delivering. </p> </div> <div class="text-box" style="margin-bottom: 30px;"> <h5 style="font-size: 1.3rem; color: #ff6600; margin-bottom: 10px;"> ⚙️ How It Works </h5> <p style="color: #555; line-height: 1.6;"> Open the app, register as a driver, and start accepting delivery requests. Track trips, earnings, and manage your account—all from your phone. </p> </div> <div class="btn-box" style="display: flex; gap: 15px;"> <a href="https://play.google.com/store/apps/details?id=unkago.taxi.zambia.driver" target="_blank"> <img src="images/playstore.png" alt="Download on Play Store" style="height: 55px;"> </a> <a href="https://apps.apple.com/us/app/unka-go-drive-earn/id6753163304" target="_blank"> <img src="images/appstore.png" alt="Download on App Store" style="height: 55px;"> </a> </div> </div> </div> <div class="col-md-6"> <div class="img-box"> <img src="images/drivers-portrait.png" alt="" class="small-img"> </div> </div> </div> </div> </section>
 
 <!-- Driver FAQs -->
 <!-- Driver FAQs -->
@@ -641,84 +649,34 @@
       </div>
       <div class="col-md-4">
         <h5>Follow Us</h5>
-        <div class="info_social">
-          <a href="#"><img src="images/fb.png" alt="Facebook"></a>
-          <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
-          <a href="#"><img src="images/linkedin.png" alt="LinkedIn"></a>
-          <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+          <div class="info_social" style="display: flex; gap: 15px; margin-top: 20px;">
+          <div>
+            <a href="https://www.facebook.com/unkagotaxi"><img src="images/fb.png" alt="Facebook" style="width: 32px; height: 32px;"></a>
+          </div>
+          <div>
+            <a href="#"><img src="images/twitter.png" alt="Twitter" style="width: 32px; height: 32px;"></a>
+          </div>
+          <div>
+            <a href="#"><img src="images/linkedin.png" alt="LinkedIn" style="width: 32px; height: 32px;"></a>
+          </div>
+          <div>
+            <a href="https://www.instagram.com/unka.go/"><img src="images/instagram.png" alt="Instagram" style="width: 32px; height: 32px;"></a>
+          </div>
         </div>
-      </div>
     </div>
     <hr class="bg-dark">
     <p class="text-center text-muted">&copy; 2025 All Rights Reserved | Powered by <a href="https://unka.co.zm" class="text-warning">Unka</a></p>
   </div>
 </section>
 <!-- Floating Purchase Button -->
-<div class="floating-purchase-btn" data-toggle="modal" data-target="#floatPurchaseModal">
+<div class="floating-purchase-btn" onclick="window.location='{{ route('purchase') }}'">
   <i class="fas fa-money-bill-wave"></i>
   <span>Float Purchase</span>
 </div>
 
-<!-- Float Purchase Modal -->
-<div class="modal fade float-purchase-modal" id="floatPurchaseModal" tabindex="-1" role="dialog" aria-labelledby="floatPurchaseModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="floatPurchaseModalLabel">Float Purchase</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form id="floatPurchaseForm">
-          <div class="form-group">
-            <label for="registeredNumber" class="form-label">Registered Number</label>
-            <input type="text" class="form-control" id="registeredNumber" placeholder="Enter your registered number" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="paymentNumber" class="form-label">Payment Number</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">+260</span>
-              </div>
-              <input type="tel" class="form-control" id="paymentNumber" placeholder="Enter payment number" required>
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label for="amount" class="form-label">Amount (ZMW)</label>
-            <input type="number" class="form-control" id="amount" placeholder="Enter amount" min="1" step="0.01" required>
-          </div>
-          
-          <div class="purchase-summary">
-            <h6>Purchase Summary</h6>
-            <div class="summary-item">
-              <span>Registered Number:</span>
-              <span id="summaryRegistered">-</span>
-            </div>
-            <div class="summary-item">
-              <span>Payment Number:</span>
-              <span id="summaryPayment">-</span>
-            </div>
-            <div class="summary-item">
-              <span>Amount:</span>
-              <span id="summaryAmount">-</span>
-            </div>
-            <div class="summary-item summary-total">
-              <span>Total:</span>
-              <span id="summaryTotal">ZMW 0.00</span>
-            </div>
-          </div>
-          
-          <button type="submit" class="btn btn-purchase">
-            <i class="fas fa-shopping-cart mr-2"></i> Complete Purchase
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+
+
+
 <!-- Replace this line -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
@@ -726,105 +684,104 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+  // --- FAQ Toggle ---
   document.querySelectorAll('.faq-header').forEach(header => {
     header.addEventListener('click', () => {
       const targetId = header.getAttribute('data-target');
       const target = document.getElementById(targetId);
-
-      // Toggle the clicked FAQ
       const isVisible = target.style.display === 'block';
       target.style.display = isVisible ? 'none' : 'block';
-
-      // Optional: close other FAQs
       document.querySelectorAll('.faq-body').forEach(body => {
-        if(body.id !== targetId) body.style.display = 'none';
+        if (body.id !== targetId) body.style.display = 'none';
       });
     });
   });
-document.addEventListener("DOMContentLoaded", function() {
+
+  // --- Highlight active navbar link ---
+  document.addEventListener("DOMContentLoaded", function() {
     const currentPath = window.location.pathname;
-
     document.querySelectorAll(".navbar-nav .nav-link").forEach(link => {
-        // Get the path from the link (ignoring domain)
-        const linkPath = new URL(link.href).pathname;
-
-        if (linkPath === currentPath) {
-            link.classList.add("active"); // highlight the link
-        } else {
-            link.classList.remove("active");
-        }
-    });
-});
-
-  // Show/hide header on scroll
-let prevScrollPos = window.pageYOffset;
-let header = document.getElementById("mainHeader");
-
-window.onscroll = function() {
-  let currentScrollPos = window.pageYOffset;
-  if (prevScrollPos > currentScrollPos) {
-    header.style.top = "0";   // scrolling up → show header
-  } else {
-    header.style.top = "-80px"; // scrolling down → hide header
-  }
-  prevScrollPos = currentScrollPos;
-}
-
-  document.querySelectorAll('.faq-header').forEach(header => {
-    header.addEventListener('click', () => {
-      const targetId = header.getAttribute('data-target');
-      const target = document.getElementById(targetId);
-
-      // Toggle the clicked FAQ
-      const isVisible = target.style.display === 'block';
-      target.style.display = isVisible ? 'none' : 'block';
-
-      // Optional: close other FAQs
-      document.querySelectorAll('.faq-body').forEach(body => {
-        if(body.id !== targetId) body.style.display = 'none';
-      });
+      const linkPath = new URL(link.href).pathname;
+      link.classList.toggle("active", linkPath === currentPath);
     });
   });
-  
 
-  // Float Purchase Form Functionality
+  // --- Header show/hide on scroll ---
+  let prevScrollPos = window.pageYOffset;
+  const header = document.getElementById("mainHeader");
+  window.onscroll = function() {
+    const currentScrollPos = window.pageYOffset;
+    header.style.top = (prevScrollPos > currentScrollPos) ? "0" : "-80px";
+    prevScrollPos = currentScrollPos;
+  };
+
+  // --- Float Purchase Form ---
   $(document).ready(function() {
-    // Update purchase summary in real-time
-    $('#registeredNumber, #paymentNumber, #amount').on('input', function() {
-      updatePurchaseSummary();
-    });
-    
+    // Update purchase summary
+    $('#registeredNumber, #paymentNumber, #amount').on('input', updatePurchaseSummary);
+
     // Handle form submission
-    $('#floatPurchaseForm').on('submit', function(e) {
+    $('#floatPurchaseForm').on('submit', async function(e) {
       e.preventDefault();
-      
-      // Get form values
-      const registeredNumber = $('#registeredNumber').val();
-      const paymentNumber = '+260' + $('#paymentNumber').val();
-      const amount = $('#amount').val();
-      
-      // Validate form
+
+      const registeredNumber = $('#registeredNumber').val().trim();
+      const paymentNumber = '+260' + $('#paymentNumber').val().trim();
+      const amount = parseFloat($('#amount').val());
+
       if (!registeredNumber || !paymentNumber || !amount) {
-        alert('Please fill in all fields');
+        alert('⚠️ Please fill in all fields.');
         return;
       }
-      
-      // In a real application, you would send this data to your server
-      // For this demo, we'll just show a success message
-      alert(`Purchase successful!\n\nRegistered Number: ${registeredNumber}\nPayment Number: ${paymentNumber}\nAmount: ZMW ${amount}`);
-      
-      // Reset form and close modal
-      $('#floatPurchaseForm')[0].reset();
-      $('#floatPurchaseModal').modal('hide');
-      updatePurchaseSummary();
+
+      // Show a loading state
+      const btn = $(this).find('button[type="submit"]');
+      const originalText = btn.html();
+      btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin mr-2"></i> Processing...');
+
+      try {
+        const response = await fetch("{{ route('topup.driver') }}", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+          },
+          body: JSON.stringify({
+            registeredNumber,
+            paymentNumber,
+            amount
+          })
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          // ✅ Success: show summary modal or alert
+          alert(
+            `✅ Top-up Successful!\n\n` +
+            `Driver: ${result.driver?.fullName || 'Unknown'}\n` +
+            `Registered Number: ${registeredNumber}\n` +
+            `Amount: ZMW ${amount}\n` +
+            `Invoice ID: ${result.invoiceId}`
+          );
+          $('#floatPurchaseForm')[0].reset();
+          updatePurchaseSummary();
+          $('#floatPurchaseModal').modal('hide');
+        } else {
+          alert('❌ ' + (result.error || 'Top-up failed. Please try again.'));
+        }
+      } catch (err) {
+        alert('❌ Error: ' + err.message);
+      } finally {
+        btn.prop('disabled', false).html(originalText);
+      }
     });
-    
+
+    // --- Update summary UI ---
     function updatePurchaseSummary() {
       const registeredNumber = $('#registeredNumber').val() || '-';
       const paymentNumber = $('#paymentNumber').val() ? '+260' + $('#paymentNumber').val() : '-';
       const amount = $('#amount').val() ? 'ZMW ' + $('#amount').val() : '-';
       const total = $('#amount').val() ? 'ZMW ' + $('#amount').val() : 'ZMW 0.00';
-      
       $('#summaryRegistered').text(registeredNumber);
       $('#summaryPayment').text(paymentNumber);
       $('#summaryAmount').text(amount);
@@ -832,6 +789,7 @@ window.onscroll = function() {
     }
   });
 </script>
+
 
 </body>
 </html>

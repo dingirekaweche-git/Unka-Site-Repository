@@ -289,6 +289,8 @@
      <li class="nav-item"><a class="nav-link" href="{{ route('services') }}">Services</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ route('driver') }}">Drivers</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ route('partner') }}">Partners</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('purchase') }}">Float Purchase</a></li>
+         <li class="nav-item"><a class="nav-link" href="{{ route('wallet-top-up') }}">Wallet Top Up</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
         </ul>
       </div>
@@ -324,7 +326,7 @@
             </div>
             <div class="service-details">
               <h4 class="service-title">Classic Ride</h4>
-              <div class="service-price">Starting from ZMW 25</div>
+              <div class="service-price">Starting from ZMW 22</div>
               <div class="service-features">
                 <div class="service-feature">
                   <i class="fas fa-user-friends"></i>
@@ -354,7 +356,7 @@
             </div>
             <div class="service-details">
               <h4 class="service-title">Business Class</h4>
-              <div class="service-price">Starting from ZMW 45</div>
+              <div class="service-price">Starting from ZMW 25</div>
               <div class="service-features">
                 <div class="service-feature">
                   <i class="fas fa-user-friends"></i>
@@ -542,8 +544,8 @@
             </tr>
             <tr>
               <td class="feature-name">Base Fare</td>
+              <td>ZMW 22</td>
               <td>ZMW 25</td>
-              <td>ZMW 45</td>
               <td>ZMW 15</td>
             </tr>
             <tr>
@@ -621,20 +623,20 @@
         <div class="col-md-4 mb-4">
           <h5 style="color: #ff9800; font-weight: 700;">Get in Touch</h5>
           <!-- Social icons -->
-          <div class="info_social" style="display: flex; gap: 15px; margin-top: 20px;">
-            <div>
-              <a href="#"><img src="images/fb.png" alt="Facebook" style="width: 32px; height: 32px;"></a>
-            </div>
-            <div>
-              <a href="#"><img src="images/twitter.png" alt="Twitter" style="width: 32px; height: 32px;"></a>
-            </div>
-            <div>
-              <a href="#"><img src="images/linkedin.png" alt="LinkedIn" style="width: 32px; height: 32px;"></a>
-            </div>
-            <div>
-              <a href="#"><img src="images/instagram.png" alt="Instagram" style="width: 32px; height: 32px;"></a>
-            </div>
+           <div class="info_social" style="display: flex; gap: 15px; margin-top: 20px;">
+          <div>
+            <a href="https://www.facebook.com/unkagotaxi"><img src="images/fb.png" alt="Facebook" style="width: 32px; height: 32px;"></a>
           </div>
+          <div>
+            <a href="#"><img src="images/twitter.png" alt="Twitter" style="width: 32px; height: 32px;"></a>
+          </div>
+          <div>
+            <a href="#"><img src="images/linkedin.png" alt="LinkedIn" style="width: 32px; height: 32px;"></a>
+          </div>
+          <div>
+            <a href="https://www.instagram.com/unka.go/"><img src="images/instagram.png" alt="Instagram" style="width: 32px; height: 32px;"></a>
+          </div>
+        </div>
         </div>
       </div>
 

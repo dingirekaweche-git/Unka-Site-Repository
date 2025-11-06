@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'association_id', // must be included here
     ];
 
     /**
@@ -45,4 +47,29 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function association()
+{
+    return $this->belongsTo(Association::class);
+}
+
+public function drivers()
+{
+    return $this->hasMany(Driver::class);
+}
+
+public function isSystemAdmin()
+{
+    return $this->role === 'system_admin';
+}
+
+public function isAssociationAdmin()
+{
+    return $this->role === 'association_admin';
+}
+
+public function isUser()
+{
+    return $this->role === 'user';
+}
+
 }

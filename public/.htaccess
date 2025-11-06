@@ -1,4 +1,35 @@
 <IfModule mod_rewrite.c>
+
+    # -------------------------
+    # Block access to sensitive files
+    # -------------------------
+    <Files .env>
+        Require all denied
+    </Files>
+
+    <FilesMatch "\.ini$">
+        Require all denied
+    </FilesMatch>
+
+    <Files composer.json>
+        Require all denied
+    </Files>
+
+    <Files composer.lock>
+        Require all denied
+    </Files>
+
+    <FilesMatch "^\.git">
+        Require all denied
+    </FilesMatch>
+
+    <FilesMatch "\.(bak|sql|swp|old)$">
+        Require all denied
+    </FilesMatch>
+
+    # -------------------------
+    # Standard Laravel rules
+    # -------------------------
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
@@ -22,4 +53,5 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
 </IfModule>

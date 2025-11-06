@@ -404,6 +404,10 @@ img, .carousel-inner, .service-box, .box {
   font-size: 1.2rem;
   color: #f8f9fa;
 }
+  .small-img {
+    width: 250px;
+    height: auto;
+  }
 
 </style>
 </head>
@@ -504,9 +508,9 @@ img, .carousel-inner, .service-box, .box {
       <span class="close-promo">&times;</span>
       <h2>Special Promotion!</h2>
       <p>Enjoy <strong>20% OFF</strong> your first ride or food delivery with Unka Go!</p>
-      <div class="promo-code">WELCOME20</div>
+      <div class="promo-code">UNKA20</div>
       <p>Use this code when booking through our app</p>
-      <img src="images/qrcode.png" alt="Special Offer" class="promo-image">
+      <img src="images/appdownload.jpeg" alt="Special Offer" class="promo-image">
       <p>Offer valid for new users only. Expires in 30 days.</p>
       <button class="promo-cta">Download App Now</button>
     </div>
@@ -536,6 +540,8 @@ img, .carousel-inner, .service-box, .box {
      <li class="nav-item"><a class="nav-link" href="{{ route('services') }}">Services</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ route('driver') }}">Drivers</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ route('partner') }}">Partners</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('purchase') }}">Float Purchase</a></li>
+         <li class="nav-item"><a class="nav-link" href="{{ route('wallet-top-up') }}">Wallet Top Up</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
 
         </ul>
@@ -753,7 +759,7 @@ img, .carousel-inner, .service-box, .box {
           <div class="item">
             <div class="box" style="background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center;">
               <div class="img-box" style="margin-bottom: 20px;">
-                <img src="images/client-1.png" alt="Aliqua" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid #ff9800;">
+                <img src="images/ceo.jpeg" alt="Aliqua" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid #ff9800;">
               </div>
               <div class="detail-box">
                 <h3 style="font-size: 1.25rem; margin-bottom: 15px;">Cobet</h3>
@@ -769,10 +775,10 @@ img, .carousel-inner, .service-box, .box {
           <div class="item">
             <div class="box" style="background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center;">
               <div class="img-box" style="margin-bottom: 20px;">
-                <img src="images/client-2.png" alt="Liqua" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid #4caf50;">
+                <img src="images/mary.png" alt="Liqua" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid #4caf50;">
               </div>
               <div class="detail-box">
-                <h3 style="font-size: 1.25rem; margin-bottom: 15px;">Liqua</h3>
+                <h3 style="font-size: 1.25rem; margin-bottom: 15px;">Mary</h3>
                 <p style="font-size: 1rem; color: #555;">
                   "I love using Unka for food delivery and parcel pickups. Everything arrives on time, and the app is super easy to navigate."
                 </p>
@@ -812,7 +818,7 @@ img, .carousel-inner, .service-box, .box {
           <i class="fas fa-map-marker-alt" style="color: orange; font-size: 1.5rem;"></i>
           <div>
             <strong>Address</strong><br>
-            Plot Number K1 098, Twin Palm Road, Lusaka
+            Counting House Square, Thabo Mbeki Road, Lusaka, Lusaka Province, Zambia
           </div>
         </div>
         
@@ -821,16 +827,7 @@ img, .carousel-inner, .service-box, .box {
           <i class="fas fa-phone-alt" style="color: orange; font-size: 1.5rem;"></i>
           <div>
             <strong>Phone Number</strong><br>
-            +260969885960 / +260771804901
-          </div>
-        </div>
-        
-        <!-- WhatsApp -->
-        <div style="display: flex; align-items: center; gap: 15px; border: 1px solid #ddd; padding: 15px; border-radius: 10px; background: #fff;">
-          <i class="fab fa-whatsapp" style="color: orange; font-size: 1.5rem;"></i>
-          <div>
-            <strong>WhatsApp</strong><br>
-            +260771804901
+           +260980410697
           </div>
         </div>
         
@@ -856,7 +853,7 @@ img, .carousel-inner, .service-box, .box {
       
       <div class="links-list" style="display: flex; flex-direction: column; gap: 15px;">
         <a href="{{ url('/') }}" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #000;">
-          <i class="fas fa-arrow-right" style="color: orange;"></i> Home
+          <i class="fas fa-arrow-right" style="color: orange;"></i> Dashboard
         </a>
         <a href="{{ route('about') }}" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #000;">
           <i class="fas fa-arrow-right" style="color: orange;"></i> About
@@ -908,10 +905,10 @@ img, .carousel-inner, .service-box, .box {
     </div>
 
     <div class="btn-box" style="display: flex; gap: 15px;">
-      <a href="#" target="_blank">
+      <a href="https://play.google.com/store/apps/details?id=unkago.taxi.zambia.passenger" target="_blank">
         <img src="images/playstore.png" alt="Download on Play Store" style="height: 50px;">
       </a>
-      <a href="#" target="_blank">
+      <a href="https://play.google.com/store/apps/details?id=unkago.taxi.zambia.passenger" target="_blank">
         <img src="images/appstore.png" alt="Download on App Store" style="height: 50px;">
       </a>
     </div>
@@ -920,7 +917,7 @@ img, .carousel-inner, .service-box, .box {
 
         <div class="col-md-6">
           <div class="img-box">
-            <img src="images/mobile.png" alt="">
+            <img src="images/passag-portrait.png" alt="" class="small-img">
           </div>
         </div>
       </div>
@@ -1011,7 +1008,7 @@ img, .carousel-inner, .service-box, .box {
       <div class="col-md-4 mb-4 footer_links">
         <h5 style="color: #ff9800; font-weight: 700;">Quick Links</h5>
         <ul style="list-style: none; padding: 0; margin-top: 15px;">
-          <li><a href="" style="color: #bbb; text-decoration: none;">Home</a></li>
+          <li><a href="" style="color: #bbb; text-decoration: none;">Dashboard</a></li>
           <li><a href="{{ route('about') }}" style="color: #bbb; text-decoration: none;">About</a></li>
           <li><a href="{{ route('services') }}" style="color: #bbb; text-decoration: none;">Services</a></li>
           <li><a href="#" style="color: #bbb; text-decoration: none;">Download App</a></li>
@@ -1024,7 +1021,7 @@ img, .carousel-inner, .service-box, .box {
         <!-- Social icons -->
         <div class="info_social" style="display: flex; gap: 15px; margin-top: 20px;">
           <div>
-            <a href="#"><img src="images/fb.png" alt="Facebook" style="width: 32px; height: 32px;"></a>
+            <a href="https://www.facebook.com/unkagotaxi"><img src="images/fb.png" alt="Facebook" style="width: 32px; height: 32px;"></a>
           </div>
           <div>
             <a href="#"><img src="images/twitter.png" alt="Twitter" style="width: 32px; height: 32px;"></a>
@@ -1033,7 +1030,7 @@ img, .carousel-inner, .service-box, .box {
             <a href="#"><img src="images/linkedin.png" alt="LinkedIn" style="width: 32px; height: 32px;"></a>
           </div>
           <div>
-            <a href="#"><img src="images/instagram.png" alt="Instagram" style="width: 32px; height: 32px;"></a>
+            <a href="https://www.instagram.com/unka.go/"><img src="images/instagram.png" alt="Instagram" style="width: 32px; height: 32px;"></a>
           </div>
         </div>
       </div>

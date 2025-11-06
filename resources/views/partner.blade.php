@@ -274,7 +274,10 @@ img, .carousel-inner, .service-box, .box {
      <li class="nav-item"><a class="nav-link" href="{{ route('services') }}">Services</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ route('driver') }}">Drivers</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ route('partner') }}">Partners</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('purchase') }}">Float Purchase</a></li>
+         <li class="nav-item"><a class="nav-link" href="{{ route('wallet-top-up') }}">Wallet Top Up</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
         </ul>
       </div>
     </nav>
@@ -436,12 +439,21 @@ img, .carousel-inner, .service-box, .box {
       </div>
       <div class="col-md-4">
         <h5>Follow Us</h5>
-        <div class="info_social">
-          <a href="#"><img src="images/fb.png" alt="Facebook"></a>
-          <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
-          <a href="#"><img src="images/linkedin.png" alt="LinkedIn"></a>
-          <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
-        </div>
+    
+            <div class="info_social" style="display: flex; gap: 15px; margin-top: 20px;">
+          <div>
+            <a href="https://www.facebook.com/unkagotaxi"><img src="images/fb.png" alt="Facebook" style="width: 32px; height: 32px;"></a>
+          </div>
+          <div>
+            <a href="#"><img src="images/twitter.png" alt="Twitter" style="width: 32px; height: 32px;"></a>
+          </div>
+          <div>
+            <a href="#"><img src="images/linkedin.png" alt="LinkedIn" style="width: 32px; height: 32px;"></a>
+          </div>
+          <div>
+            <a href="https://www.instagram.com/unka.go/"><img src="images/instagram.png" alt="Instagram" style="width: 32px; height: 32px;"></a>
+          </div>
+        
       </div>
     </div>
     <hr class="bg-dark">

@@ -259,6 +259,7 @@
      <li class="nav-item"><a class="nav-link" href="{{ route('services') }}">Services</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ route('driver') }}">Drivers</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ route('partner') }}">Partners</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('purchase') }}">Float Purchase</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
         </ul>
       </div>
@@ -300,7 +301,7 @@
   <section class="ceo-section">
   <div class="ceo-container">
     <div class="ceo-image">
-      <img src="images/ceo.jpeg" alt="CEO of Unka Go">
+      <img src="images/4.png" alt="CEO of Unka Go">
     </div>
     <div class="ceo-content">
       <h2 style="color: #ff9800; margin-bottom: 20px;">Message from Our CEO</h2>
@@ -311,8 +312,8 @@
         We are committed to our community—creating opportunities for drivers, supporting local businesses, and providing services that simplify everyday life. Our core values of reliability, safety, affordability, and innovation guide everything we do.
       </p>
       <div class="ceo-signature">
-        <div class="ceo-name">James Phiri</div>
-        <div class="ceo-title">Founder & CEO, Unka Go</div>
+        <div class="ceo-name">Christopher Chileshe</div>
+        <div class="ceo-title">CEO, Unka Go</div>
       </div>
     </div>
   </div>
@@ -347,7 +348,7 @@
     </div>
   </section>
 
-  <!-- Team Gallery Section -->
+  <!-- Team Gallery Section 
   <section class="team-section">
     <div class="section-heading">
       <h2>Meet Our <span>Leadership Team</span></h2>
@@ -355,7 +356,7 @@
     </div>
     
     <div class="team-grid">
-      <!-- Team Member 1 -->
+    Team Member 1 
       <div class="team-member">
         <div class="member-image">
           <img src="images/ceo.jpeg" alt="James Phiri">
@@ -367,7 +368,7 @@
         </div>
       </div>
       
-      <!-- Team Member 2 -->
+       Team Member 2 
       <div class="team-member">
         <div class="member-image">
           <img src="images/ceo.jpeg" alt="Sarah Mwale">
@@ -379,7 +380,7 @@
         </div>
       </div>
       
-      <!-- Team Member 3 -->
+       Team Member 3
       <div class="team-member">
         <div class="member-image">
           <img src="images/ceo.jpeg" alt="David Banda">
@@ -391,7 +392,7 @@
         </div>
       </div>
       
-      <!-- Team Member 4 -->
+       Team Member 4 
       <div class="team-member">
         <div class="member-image">
           <img src="images/ceo.jpeg" alt="Chileshe Kapumba">
@@ -403,7 +404,7 @@
         </div>
       </div>
       
-      <!-- Team Member 5 -->
+      Team Member 5 
       <div class="team-member">
         <div class="member-image">
           <img src="images/ceo.jpeg" alt="Michael Tembo">
@@ -415,7 +416,7 @@
         </div>
       </div>
       
-      <!-- Team Member 6 -->
+       Team Member 6 
       <div class="team-member">
         <div class="member-image">
           <img src="images/ceo.jpeg" alt="Ruth Ngoma">
@@ -427,7 +428,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- info section -->
   <section class="container-fluid footer_section" style="background: #222; color: #fff; padding: 60px 0 20px;">
@@ -458,19 +459,19 @@
           <h5 style="color: #ff9800; font-weight: 700;">Get in Touch</h5>
           <!-- Social icons -->
           <div class="info_social" style="display: flex; gap: 15px; margin-top: 20px;">
-            <div>
-              <a href="#"><img src="images/fb.png" alt="Facebook" style="width: 32px; height: 32px;"></a>
-            </div>
-            <div>
-              <a href="#"><img src="images/twitter.png" alt="Twitter" style="width: 32px; height: 32px;"></a>
-            </div>
-            <div>
-              <a href="#"><img src="images/linkedin.png" alt="LinkedIn" style="width: 32px; height: 32px;"></a>
-            </div>
-            <div>
-              <a href="#"><img src="images/instagram.png" alt="Instagram" style="width: 32px; height: 32px;"></a>
-            </div>
+          <div>
+            <a href="https://www.facebook.com/unkagotaxi"><img src="images/fb.png" alt="Facebook" style="width: 32px; height: 32px;"></a>
           </div>
+          <div>
+            <a href="#"><img src="images/twitter.png" alt="Twitter" style="width: 32px; height: 32px;"></a>
+          </div>
+          <div>
+            <a href="#"><img src="images/linkedin.png" alt="LinkedIn" style="width: 32px; height: 32px;"></a>
+          </div>
+          <div>
+            <a href="https://www.instagram.com/unka.go/"><img src="images/instagram.png" alt="Instagram" style="width: 32px; height: 32px;"></a>
+          </div>
+        </div>
         </div>
       </div>
 
