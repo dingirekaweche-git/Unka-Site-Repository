@@ -285,6 +285,25 @@
                 margin-bottom: 1rem;
             }
         }
+        @media (max-width: 768px) {
+    .table-responsive {
+        border-radius: 8px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table th, table td {
+        white-space: nowrap;
+        font-size: 0.85rem;
+    }
+
+    .card-header span {
+        display: block;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -415,8 +434,8 @@
         <span class="badge bg-primary">{{ $listorders->total() }} orders</span>
     </div>
     <div class="card-body p-0">
-        <div class="table-responsive">
-            <table class="table table-hover">
+         <div class="table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
+    <table class="table table-hover table-bordered table-striped align-middle text-nowrap">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -464,7 +483,7 @@
 
         <!-- Pagination Links -->
         <div class="p-3">
-            {{ $listorders->links('pagination::bootstrap-5') }}
+            {{ $listorders->appends(request()->query())->links('pagination::bootstrap-5') }}
         </div>
     </div>
 </div>

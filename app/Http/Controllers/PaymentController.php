@@ -87,8 +87,8 @@ class PaymentController extends Controller
                     "id" => (string) $reference,
                 ],
                 "customer" => [
-                    "first_name" => "Driver",
-                    "last_name" => "TopUp",
+                    "first_name" => $registeredNumber,
+                    "last_name" => $registeredNumber,
                     "email" => "noemail@unka.com",
                     "mobile" => $paymentNumber,
                     "address" => "Zambia"
@@ -121,8 +121,10 @@ class PaymentController extends Controller
 
             // 3️⃣ Insert transaction record into DB using mysql connection
             $paymentRecordId = DB::connection('mysql')->table('payments')->insertGetId([
+               'payment_number' => $paymentNumber,
                 'driver_phone' => $registeredNumber,
                 'amount' => $amount,
+                'customer_name' => $registeredNumber, // ✅ Added
                 'transaction_id' => $transactionId,
                 'momo_provider_id' => null,
                 'payment_method' => $paymentMethod,
@@ -151,9 +153,22 @@ class PaymentController extends Controller
                     continue;
                 }
 
-                $status = $statusResponse->json('data.transatcion.status') ?? 'TIP';
+                  $transactionNode = $statusResponse->json('data.transaction') ?? $statusResponse->json('data.transatcion') ?? [];
+                $status = $transactionNode['status'] ?? 'TIP';
+                $momoProviderId = $transactionNode['momo_provider_id'] ?? null;
+
                 DB::connection('mysql')->table('payments')->where('id', $paymentRecordId)
-                    ->update(['status' => $status, 'updated_at' => now()]);
+                    ->update([
+                        'status' => $status,
+                        'momo_provider_id' => $momoProviderId,
+                        'updated_at' => now()
+                    ]);
+
+                Log::info("🔄 Payment status updated", [
+                    'transactionId' => $transactionId,
+                    'status' => $status,
+                    'momo_provider_id' => $momoProviderId
+                ]);
 
                 Log::info("🔄 Payment status update", ['transactionId' => $transactionId, 'status' => $status]);
 

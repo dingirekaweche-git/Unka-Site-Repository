@@ -20,6 +20,25 @@
         .stats-label { font-size: 0.9rem; opacity: 0.9; }
         .status-badge { padding: 0.4rem 0.8rem; border-radius: 50px; font-size: 0.8rem; text-transform: capitalize; }
         .status-finished { background-color: rgba(40,167,69,0.15); color: #28a745; }
+        @media (max-width: 768px) {
+    .table-responsive {
+        border-radius: 8px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table th, table td {
+        white-space: nowrap;
+        font-size: 0.85rem;
+    }
+
+    .card-header span {
+        display: block;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+}
+
     </style>
 </head>
 
@@ -91,7 +110,7 @@
         $groupedData = $orders->groupBy('driver_name')->map(function($driverOrders) {
             return $driverOrders->sum(function($order) {
                 $rateValue = floatval(preg_replace('/[^0-9.]/', '', $order->driver_rate_plan));
-                return $rateValue > 0 ? ($order->final_cost / $rateValue) : 0;
+                return $rateValue > 0 ? ($order->total_cost / $rateValue) : 0;
             });
         });
 
@@ -114,8 +133,9 @@
                 <span class="badge bg-primary">{{ $listorders->total() }} Orders</span>
             </div>
             <div class="card-body p-0">
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle">
+               <div class="table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
+    <table class="table table-hover table-bordered table-striped align-middle text-nowrap">
+
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -124,6 +144,7 @@
                                 <th>Rate Plan</th>
                                 <th>Status</th>
                                 <th>Final Cost</th>
+                                <th>Coupon Discount</th>
                                 <th>Revenue (Calc)</th>
                                 <th>Created At</th>
                             </tr>
@@ -132,7 +153,7 @@
                             @foreach($listorders as $order)
                                 @php
                                     $rateValue = floatval(preg_replace('/[^0-9.]/', '', $order->driver_rate_plan));
-                                    $revenue = $rateValue > 0 ?  ($order->final_cost * ($rateValue / 100)): 0;
+                                    $revenue = $rateValue > 0 ?  ($order->total_cost * ($rateValue / 100)): 0;
                                     
                                 @endphp
                                 <tr>
@@ -141,7 +162,8 @@
                                     <td>{{ $order->passenger_name ?? '-' }}</td>
                                     <td>{{ $order->driver_rate_plan }}</td>
                                     <td><span class="status-badge status-finished">{{ $order->order_status }}</span></td>
-                                    <td>ZMW {{ number_format($order->final_cost, 2) }}</td>
+                                    <td>ZMW {{ number_format($order->total_cost, 2) }}</td>
+                                    <td>ZMW {{ number_format($order->coupon_discount, 2) }}</td>
                                     <td><strong>ZMW {{ number_format($revenue, 2) }}</strong></td>
                                     <td>{{ $order->created_at->format('d/m/Y H:i') }}</td>
                                 </tr>
@@ -150,7 +172,7 @@
                     </table>
                 </div>
 
-                <div class="p-3">{{ $listorders->links('pagination::bootstrap-5') }}</div>
+                <div class="p-3">  {{ $listorders->appends(request()->query())->links('pagination::bootstrap-5') }}</div>
             </div>
         </div>
     </div>

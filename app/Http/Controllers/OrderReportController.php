@@ -91,7 +91,7 @@ class OrderReportController extends Controller
     $totalRevenue = $orders->sum(function ($order) {
         $rateValue = floatval(preg_replace('/[^0-9.]/', '', $order->driver_rate_plan));
    
-         return $rateValue > 0 ? ($order->final_cost * ($rateValue / 100)) : 0;
+         return $rateValue > 0 ? ($order->total_cost * ($rateValue / 100)) : 0;
     });
     $orderscount = \App\Models\Orders::whereIn('order_status', $statuses)
         ->whereIn('driver_rate_plan', $ratePlans)

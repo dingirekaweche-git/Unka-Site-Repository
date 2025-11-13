@@ -108,6 +108,8 @@ class Orders extends Model
         'promo_campaign_name',
         'customer_reward_data',
         'driver_reward_data',
+        'wallet_deducted',
+        'deducted_at'
     ];
 
     protected $casts = [

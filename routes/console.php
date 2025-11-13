@@ -26,3 +26,4 @@ Schedule::command('onde:passengers-report')
 Schedule::command('payments:check-driver')->everyFiveMinutes();
 Schedule::command('payments:check-customer')->everyFiveMinutes();
 Schedule::command('onde:fetch-passengers')->everyMinute();
+Schedule::command('corporate:deduct-balances')->hourly();

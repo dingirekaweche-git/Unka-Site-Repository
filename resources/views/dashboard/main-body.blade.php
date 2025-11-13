@@ -343,7 +343,7 @@
 @endforeach
  
     </div>
-    @else
+    @elseif(auth()->user()->role === 'system_admin')
 <div class="container-fluid">
 
     {{-- Dashboard Header --}}
@@ -464,6 +464,140 @@
     transform:translateY(-2px);
     box-shadow:0 6px 20px rgba(0,0,0,.12);
 }
+</style>
+@else
+
+<div class="container py-4">
+    <h2 class="mb-4 text-orange">Corporate Dashboard</h2>
+@if($corporate && $corporate->account_type === 'prepaid')
+    <div class="card p-3 mb-4 shadow-sm border-0" style="border-left:4px solid #f68b1f;">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h4 class="mb-1 text-orange">Prepaid Wallet</h4>
+                <p class="mb-0 small text-muted">Corporate ID: {{ $corporate->corporate_id }}</p>
+            </div>
+            <i class='bx bx-wallet bx-lg text-orange'></i>
+        </div>
+        <hr>
+        <div class="row text-center">
+            <div class="col-md-6">
+                <h3 class="mb-0">K{{ number_format($wallet->balance ?? 0, 2) }}</h3>
+                <p class="small text-muted mb-0">Current Balance</p>
+            </div>
+            <div class="col-md-6">
+                <h3 class="mb-0">K{{ number_format($wallet->last_topup ?? 0, 2) }}</h3>
+                <p class="small text-muted mb-0">Last Top-Up</p>
+            </div>
+        </div>
+    </div>
+@endif
+
+    <!-- Date filter -->
+    <form method="GET" class="mb-4 row g-2 align-items-end">
+        <div class="col-md-3">
+            <label for="start_date" class="form-label">Start Date</label>
+            <input type="date" id="start_date" name="start_date" class="form-control" value="{{ $startDate }}">
+        </div>
+        <div class="col-md-3">
+            <label for="end_date" class="form-label">End Date</label>
+            <input type="date" id="end_date" name="end_date" class="form-control" value="{{ $endDate }}">
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-orange w-100">Filter</button>
+        </div>
+    </form>
+
+    {{-- ✅ Employee Stats Cards Full Width --}}
+    <h4 class="mb-3 text-orange">Employees</h4>
+    <div class="row g-3 mb-4">
+        <div class="col-6">
+            <div class="card stats-card p-3 shadow-sm border-0">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 class="mb-0">{{ $totalEmployees }}</h3>
+                        <p class="mb-0 small text-muted">Total Employees</p>
+                    </div>
+                    <i class='bx bx-group bx-lg text-primary'></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="card stats-card p-3 shadow-sm border-0" style="border-left:4px solid #198754;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 class="mb-0">{{ $activeEmployees }}</h3>
+                        <p class="mb-0 small text-muted">Active Employees</p>
+                    </div>
+                    <i class='bx bx-check-circle bx-lg text-success'></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card stats-card p-3 shadow-sm border-0" style="border-left:4px solid #dc3545;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 class="mb-0">{{ $inactiveEmployees }}</h3>
+                        <p class="mb-0 small text-muted">Inactive Employees</p>
+                    </div>
+                    <i class='bx bx-x-circle bx-lg text-danger'></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- ✅ Orders/Trips Stats Cards Full Width --}}
+    <h4 class="mb-3 text-orange">Orders / Trips</h4>
+    <div class="row g-3 mb-4">
+        <div class="col-12">
+            <div class="card stats-card p-3 shadow-sm border-0" style="border-left:4px solid #f68b1f;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 class="mb-0">{{ $totalTrips }}</h3>
+                        <p class="mb-0 small text-muted">Total Trips</p>
+                    </div>
+                    <i class='bx bx-trip bx-lg text-warning'></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card stats-card p-3 shadow-sm border-0" style="border-left:4px solid #ff6600;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 class="mb-0">K{{ number_format($totalCost, 2) }}</h3>
+                        <p class="mb-0 small text-muted">Total Cost</p>
+                    </div>
+                    <i class='bx bx-wallet bx-lg text-orange'></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .btn-orange {
+        background-color: #f68b1f;
+        color: #fff;
+        border: none;
+        transition: background-color 0.2s ease-in-out;
+    }
+    .btn-orange:hover {
+        background-color: #e07a1f;
+        color: #fff;
+    }
+    .stats-card {
+        border-radius: 0.5rem;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .stats-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+    .text-orange {
+        color: #f68b1f;
+    }
 </style>
 
 @endif

@@ -17,6 +17,7 @@ class DriverOnde extends Model
         'fullName',
         'phone',
         'state',
+        'vehicleType',
         'boardNumber',
         'invited_message_sent',
         'active_message_sent',

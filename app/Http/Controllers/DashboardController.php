@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Passenger;
 use App\Models\DriverOnde;
 use App\Models\Orders;
+use App\Models\CorporateAccount;
+use App\Models\CorporateAccountEmployee;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -116,22 +118,53 @@ $endDate = $request->end_date
 
 $usageRevenue = $subOrders->sum(function($order) {
     $rate = floatval(preg_replace('/[^0-9.]/','',$order->driver_rate_plan));
-    return $rate > 0 ? ($order->final_cost * ($rate / 100)) : 0;
+    return $rate > 0 ? ($order->total_cost * ($rate / 100)) : 0;
 });
 
+$corporate_id = $user->corporate_account;
+
+    // Employees
+    $employeesQuery = CorporateAccountEmployee::where('corporate_id', $corporate_id);
+    $totalEmployees = $employeesQuery->count();
+    $activeEmployees = $employeesQuery->where('active', 1)->count();
+    $inactiveEmployees = $employeesQuery->where('active', 0)->count();
+
+    // Orders for this corporate account
+    $completedStatuses = ['FINISHED_PAID'];
+
+    $ordersQuery = Orders::where('corporate_account', $corporate_id)
+        ->where('payment_method', 'CORPORATE_ACCOUNT')
+        ->whereBetween('created_at', [$startDate, $endDate]);
+
+    $totalTrips = $ordersQuery->count();
+    $totalCost = $ordersQuery->whereIn('order_status', $completedStatuses)->sum('total_cost');
+    // Corporate Account
+    $corporate = \App\Models\CorporateAccount::where('corporate_id', $corporate_id)->first();
+
+    $wallet = null;
+    if ($corporate && $corporate->account_type === 'prepaid') {
+        $wallet = \App\Models\CorporateWallet::where('corporate_id', $corporate_id)->first();
+    }
 return view('dashboard', compact(
     'driversGrouped', 
     'user',
     'stats',
-        'driverStats',
-        'report',
+    'driverStats',
+    'report',
         'totalOrders',
         'completedOrders',
         'cancelledCount',
         'totalRevenue',
         'usageRevenue',
         'startDate',
-        'endDate'
+        'endDate',
+         'totalEmployees',
+        'activeEmployees',
+        'inactiveEmployees',
+        'totalTrips',
+        'totalCost',
+         'corporate',
+        'wallet'
 ));
 
 }

@@ -70,9 +70,10 @@ ul {
 }
 
 /* ===== Sidebar ===== */
+/* ===== Sidebar ===== */
 .sidebar {
     position: fixed;
-    top: 60px; /* header height */
+    top: 60px; /* below the header */
     left: 0;
     width: 250px;
     height: calc(100% - 60px);
@@ -80,29 +81,41 @@ ul {
     color: #fff;
     display: flex;
     flex-direction: column;
-    transition: all 0.3s ease;
+    overflow-y: auto; /* ✅ enables vertical scroll if content overflows */
+    overflow-x: hidden;
+    scroll-behavior: smooth;
     z-index: 900;
+}
+
+/* Make sure scrollbar looks clean */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
 }
 
 .sidebar .logo-details {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 20px;
+    padding: 15px 20px;
     border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
-.sidebar .logo-details i {
-    font-size: 28px;
-}
-
-.sidebar .logo_name {
-    font-size: 18px;
-    font-weight: 600;
+/* ✅ Ensure list starts from the top just below logo */
+.sidebar .side-nav {
+    flex-grow: 1;
+    margin-top: 0; /* remove any spacing pushing it down */
+    padding-top: 5px;
 }
 
 .sidebar .side-nav li {
-    padding: 12px 20px;
+    padding: 0; /* reset unnecessary padding */
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
@@ -113,27 +126,25 @@ ul {
     font-size: 15px;
     transition: all 0.2s ease;
     text-decoration: none !important;
-    padding: 12px 20px; /* consistent padding */
+    padding: 12px 20px;
     border-radius: 8px;
-    box-sizing: border-box; /* prevent hover shift */
+    box-sizing: border-box;
 }
 
 .sidebar .side-nav li a:hover,
 .sidebar .side-nav li a.active {
     background: rgba(255, 255, 255, 0.2);
-    /* do NOT change padding here */
 }
 
 .sidebar .side-nav li i {
     font-size: 20px;
     margin-right: 10px;
-    text-decoration: none !important;
 }
 
-/* Logout at bottom */
 .sidebar .logout-section {
     margin-top: auto;
     padding: 20px;
+    background: rgba(0,0,0,0.1); /* subtle visual separation */
 }
 
 .sidebar .logout-section button {

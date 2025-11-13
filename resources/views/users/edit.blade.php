@@ -88,6 +88,7 @@
                         <option value="system_admin" {{ $user->role === 'system_admin' ? 'selected' : '' }}>System Admin</option>
                         <option value="association_admin" {{ $user->role === 'association_admin' ? 'selected' : '' }}>Association Admin</option>
                         <option value="user" {{ $user->role === 'user' ? 'selected' : '' }}>User</option>
+                        <option value="corporate" {{ $user->role === 'corporate' ? 'selected' : '' }}>Corporate</option>
                     </select>
                 </div>
 

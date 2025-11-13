@@ -12,6 +12,13 @@ use App\Http\Middleware\RoleMiddleware;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\OrderReportController;
 use App\Http\Controllers\PassengerController;
+use App\Http\Controllers\CorporateAccountController;
+use App\Http\Controllers\CorporateAccountEmployeeController;
+use App\Http\Controllers\CashOutController;
+use App\Http\Controllers\EmployeeViewController;
+use App\Http\Controllers\CorporateOrdersController;
+use App\Http\Controllers\CorporateInvoiceController;
+use App\Http\Controllers\CorporateWalletController;
 
 Route::get('/', fn() => view('welcome'));
 
@@ -56,8 +63,31 @@ Route::middleware([Authenticate::class, RoleMiddleware::class . ':system_admin']
 Route::middleware([Authenticate::class, RoleMiddleware::class . ':system_admin'])->group(function () {
     Route::get('/usage-based-revenue', [OrderReportController::class, 'usageBasedRevenue'])->name('order_report.revenue');
     Route::get('/passengers/dashboard', [PassengerController::class, 'dashboard'])->name('passengers.dashboard');
-      Route::get('/driver-performance/dashboard', [DriverPerformanceController::class, 'dashboard'])->name('driver-performance.dashboard');
+    Route::get('/driver-performance/dashboard', [DriverPerformanceController::class, 'dashboard'])->name('driver-performance.dashboard');
+    Route::resource('corporate_accounts', CorporateAccountController::class);
+        Route::get('/corporate/wallets', [CorporateWalletController::class, 'index'])->name('corporate.wallets.index');
+    Route::post('/corporate/wallets/{corporate_id}/topup', [CorporateWalletController::class, 'updateBalance'])->name('corporate.wallets.topup');
 });
+
+Route::middleware([Authenticate::class, RoleMiddleware::class . ':system_admin'])->prefix('corporate_accounts/{corporate_id}/employees')->group(function () {
+    Route::get('/', [CorporateAccountEmployeeController::class, 'index'])->name('corporate_employees.index');
+    Route::get('/create', [CorporateAccountEmployeeController::class, 'create'])->name('corporate_employees.create');
+    Route::post('/', [CorporateAccountEmployeeController::class, 'store'])->name('corporate_employees.store');
+    Route::get('/{id}', [CorporateAccountEmployeeController::class, 'show'])->name('corporate_employees.show');
+    Route::get('/{id}/edit', [CorporateAccountEmployeeController::class, 'edit'])->name('corporate_employees.edit');
+    Route::put('/{id}', [CorporateAccountEmployeeController::class, 'update'])->name('corporate_employees.update');
+    Route::delete('/{id}', [CorporateAccountEmployeeController::class, 'destroy'])->name('corporate_employees.destroy');
+});
+Route::middleware([Authenticate::class, RoleMiddleware::class . ':system_admin|corporate'])
+    ->group(function () {
+        Route::get('/employees', [EmployeeViewController::class, 'index'])->name('employees.index');
+    });
+Route::middleware([Authenticate::class, RoleMiddleware::class . ':corporate|system_admin'])
+    ->group(function () {
+        Route::get('/corporate-orders', [CorporateOrdersController::class, 'index'])->name('corporate.orders.index');
+          Route::get('/corporate/invoices', [CorporateInvoiceController::class, 'index'])->name('corporate.invoices.index');
+        Route::get('/corporate/invoices/download', [CorporateInvoiceController::class, 'download'])->name('corporate.invoices.download');
+    });
 // Public pages
 Route::view('/policies', 'policies')->name('policies');
 Route::view('/terms', 'terms')->name('terms');
@@ -70,5 +100,9 @@ Route::view('/float_purchase', 'float_purchase')->name('purchase');
 Route::post('/topup-driver', [DriverController::class, 'topupDriver'])->name('topup.driver');
 Route::post('/topup/customer', [PaymentController::class, 'topupCustomerWallet'])->name('topup.customer');
 Route::view('/wallet-top-up', 'wallet-top-up')->name('wallet-top-up');
+
+Route::get('/cashout', [CashOutController::class, 'index'])->name('cashout.form');
+Route::post('/cashout', [CashOutController::class, 'cashOut'])->name('cashout.process');
+
 
 require __DIR__.'/auth.php';

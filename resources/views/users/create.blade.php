@@ -87,6 +87,7 @@
                         <option value="">-- Select Role --</option>
                         <option value="system_admin">System Admin</option>
                         <option value="association_admin">Association Admin</option>
+                        <option value="corporate">Corporate</option>
                         <option value="user">User</option>
                     </select>
                 </div>

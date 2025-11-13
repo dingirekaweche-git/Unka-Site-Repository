@@ -11,7 +11,9 @@ class Payments extends Model
 
     protected $fillable = [
         'driver_phone',
+        'payment_number',
         'amount',
+        'customer_name',
         'transaction_id',
         'momo_provider_id',
         'payment_method',

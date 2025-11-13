@@ -18,6 +18,7 @@ return new class extends Migration
     $table->string('password');
     $table->enum('role', ['system_admin', 'association_admin', 'user'])->default('user');
     $table->foreignId('association_id')->nullable()->constrained('associations')->nullOnDelete();
+    $table->foreignId('corporate_id')->nullable()->constrained('corporate_account')->nullOnDelete();
     $table->timestamps();
 });
 

@@ -57,7 +57,10 @@ class DriverController extends Controller
             }
 
             $driverId = $matchedDriver['driverId'];
-            Log::info("✅ Driver verified before payment", ['driverId' => $driverId]);
+$driverName = $matchedDriver['fullName'] ?? $matchedDriver['name'] ?? 'Unknown Driver';
+$driverPhone = $matchedDriver['phone'] ?? $registeredNumber;
+
+Log::info("✅ Driver verified", ['driverId' => $driverId, 'driverName' => $driverName]);
 
             // 2️⃣ Determine payment method
             $cleanNumber = preg_replace('/\D/', '', $paymentNumber);
@@ -98,13 +101,13 @@ class DriverController extends Controller
                     "description" => $comment,
                     "id" => (string) $reference,
                 ],
-                "customer" => [
-                    "first_name" => "Driver",
-                    "last_name" => "TopUp",
-                    "email" => "noemail@unka.com",
-                    "mobile" => $cleanNumber,
-                    "address" => "Zambia"
-                ]
+                  "customer" => [
+        "first_name" => explode(' ', $driverName)[0] ?? 'Driver',
+        "last_name" => explode(' ', $driverName)[1] ?? '',
+        "email" => "noemail@unka.com",
+        "mobile" => $driverPhone,
+        "address" => "Zambia",
+    ]
             ];
 
             $initResponse = Http::withOptions(['verify' => false])
@@ -134,9 +137,11 @@ class DriverController extends Controller
             Log::info("💰 Payment initiated", ['transactionId' => $transactionId]);
 
             // 4️⃣ Insert transaction record
-            $paymentRecordId = DB::connection('mysql')->table('payments')->insertGetId([
+          $paymentRecordId = DB::connection('mysql')->table('payments')->insertGetId([
+                'payment_number' => $paymentNumber,
                 'driver_phone' => $registeredNumber,
                 'amount' => $amount,
+                'customer_name' => $driverName, // ✅ Added
                 'transaction_id' => $transactionId,
                 'momo_provider_id' => null,
                 'payment_method' => $paymentMethod,
@@ -176,11 +181,12 @@ class DriverController extends Controller
                         continue;
                     }
 
-                    $statusData = $statusResponse->json('data');
-                    $status = $statusData['transaction']['status']
-                        ?? $statusData['transatcion']['status']
-                        ?? $statusData['status']
-                        ?? 'UNKNOWN';
+                 
+                        $statusData = $statusResponse->json('data');
+$transactionNode = $statusData['transaction'] ?? $statusData['transatcion'] ?? [];
+$status = $transactionNode['status'] ?? 'UNKNOWN';
+$momoProviderId = $transactionNode['momo_provider_id'] ?? null; // ✅ capture provider ID
+
 
                     Log::info("🔄 Payment status update", ['transactionId' => $transactionId, 'status' => $status]);
 
@@ -196,6 +202,7 @@ class DriverController extends Controller
                             ->where('id', $paymentRecordId)
                             ->update([
                                 'status' => in_array($status, ['TS', 'SUCCESS']) ? 'SUCCESS' : 'FAILED',
+                                'momo_provider_id' => $momoProviderId, 
                                 'paid_at' => in_array($status, ['TS', 'SUCCESS']) ? Carbon::now() : null,
                                 'updated_at' => now(),
                             ]);

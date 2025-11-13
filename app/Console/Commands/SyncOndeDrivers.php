@@ -49,6 +49,7 @@ class SyncOndeDrivers extends Command
                 $state = $driver['state'] ?? 'UNKNOWN';
 
                 $car = $driver['car'] ?? [];
+                $vehicleType = $car['vehicleType'] ?? null;
                 $boardNumber = $car['boardNumber'] ?? null;
 
                 $fullName = $driver['fullName'] ?? $driver['name'] ?? ($phone ?? 'Unknown');
@@ -67,6 +68,7 @@ class SyncOndeDrivers extends Command
                         'fullName' => $fullName,
                         'phone' => $phone,
                         'state' => $state,
+                        'vehicleType' => $vehicleType,
                         'boardNumber' => $boardNumber,
                         'updated_at' => now(),
                     ]);
@@ -78,6 +80,7 @@ class SyncOndeDrivers extends Command
                         'fullName' => $fullName,
                         'phone' => $phone,
                         'state' => $state,
+                        'vehicleType' => $vehicleType,
                         'boardNumber' => $boardNumber,
                         'invited_message_sent' => false,
                         'active_message_sent' => false,

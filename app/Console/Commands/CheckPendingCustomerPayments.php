@@ -40,19 +40,24 @@ class CheckPendingCustomerPayments extends Command
                     continue;
                 }
 
-                $status = $statusResponse->json('data.transatcion.status') ?? 'TIP';
+                   $data = $statusResponse->json('data') ?? [];
+                $transactionNode = $data['transaction'] ?? $data['transatcion'] ?? [];
+                $status = $transactionNode['status'] ?? 'TIP';
+                $momoProviderId = $transactionNode['momo_provider_id'] ?? null;
 
-                if ($status !== $payment->status) {
+                 if ($status !== $payment->status || $momoProviderId !== $payment->momo_provider_id) {
                     DB::connection('mysql')->table('payments')
                         ->where('id', $payment->id)
                         ->update([
                             'status' => $status,
-                            'updated_at' => now()
+                            'momo_provider_id' => $momoProviderId,
+                            'updated_at' => now(),
                         ]);
 
-                    Log::info("🔄 Payment status updated", [
+                    Log::info("🔄 Payment updated", [
                         'transactionId' => $transactionId,
-                        'status' => $status
+                        'status' => $status,
+                        'momo_provider_id' => $momoProviderId
                     ]);
                 }
 

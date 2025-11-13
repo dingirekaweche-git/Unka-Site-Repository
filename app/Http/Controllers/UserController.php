@@ -36,7 +36,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'role' => 'required|in:system_admin,association_admin,user',
+            'role' => 'required|in:system_admin,association_admin,user,corporate',
             'association_id' => 'nullable|exists:associations,id',
         ]);
 
@@ -72,7 +72,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
             'password' => 'nullable|string|min:6|confirmed',
-            'role' => 'required|in:system_admin,association_admin,user',
+            'role' => 'required|in:system_admin,association_admin,user,corporate',
             'association_id' => 'nullable|exists:associations,id',
         ]);
 

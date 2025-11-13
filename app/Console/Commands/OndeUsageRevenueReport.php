@@ -14,7 +14,7 @@ class OndeUsageRevenueReport extends Command
     protected $signature = 'onde:usage-revenue-report';
     protected $description = 'Send hourly Unka usage revenue report';
 
-    protected $recipients = ['0978817141','0979459414','0976290607','0980888133','0980888111'];
+      protected $recipients = ['0978817141','0979459414','0976290607','0980888133','0980888111','0980777888','0980888666','0980888114'];
 
     protected $subscriptionPlans = ['10 SUBSCRIPTION','12.5 SUBSCRIPTION','8.0 SUBSCRIPTION'];
 
@@ -63,7 +63,7 @@ class OndeUsageRevenueReport extends Command
 
         return $subOrders->sum(function($order) {
             $rate = floatval(preg_replace('/[^0-9.]/','',$order->driver_rate_plan));
-            return $rate > 0 ? ($order->final_cost * ($rate / 100)) : 0;
+            return $rate > 0 ? ($order->total_cost * ($rate / 100)) : 0;
         });
     }
 

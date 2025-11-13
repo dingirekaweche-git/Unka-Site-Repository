@@ -13,7 +13,9 @@ class OndeDriverReport extends Command
     protected $signature = 'onde:driver-report';
     protected $description = 'Send hourly Onde driver registration report between 08:00 and 22:00';
 
-    protected $recipients = ['0978817141','0979459414','0976290607','0980888133','0980888111'];
+    protected $recipients = [
+        '0978817141'
+    ];
 
     public function handle()
     {
@@ -38,28 +40,41 @@ class OndeDriverReport extends Command
             ->whereDate('created_at', $now->toDateString())
             ->count();
 
-        // Overall counts
-        $overallActive = DB::table('driver_onde')
-            ->where('state', 'ACTIVE')
-            ->count();
-
+        // Overall pending
         $overallPending = DB::table('driver_onde')
             ->whereIn('state', ['NOT_ACTIVATED', 'INVITED'])
             ->count();
+
+        // Overall Active (split by vehicle type)
+        $overallActiveVehicles = DB::table('driver_onde')
+            ->where('state', 'ACTIVE')
+            ->whereNotIn('vehicleType', ['MOTO', 'COURIER','BICYCLE'])
+            ->count();
+
+        $overallActiveDelivery = DB::table('driver_onde')
+            ->where('state', 'ACTIVE')
+            ->whereIn('vehicleType', ['MOTO', 'COURIER','BICYCLE'])
+            ->count();
+
+        $overallActiveTotal = $overallActiveVehicles + $overallActiveDelivery;
 
         // SMS Message
         $message = sprintf(
             "Unka Driver Report\n".
             "Time: %s\n".
-            "Registrations (Last Hour): %d\n".
-            "Registrations (Today): %d\n".
+            "Reg. (Last Hour): %d\n".
+            "Reg. (Today): %d\n".
             "Overall Pending: %d\n".
-            "Overall Active: %d",
+            "Overall Active: %d\n".
+            "Active Vehicles: %d\n".
+            "Active Delivery: %d",
             $now->format('H:i'),
             $registrationsLastHour,
             $registrationsToday,
             $overallPending,
-            $overallActive
+            $overallActiveTotal,
+            $overallActiveVehicles,
+            $overallActiveDelivery
         );
 
         foreach ($this->recipients as $recipient) {

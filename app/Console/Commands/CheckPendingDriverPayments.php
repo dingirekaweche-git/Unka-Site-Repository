@@ -37,14 +37,23 @@ class CheckPendingDriverPayments extends Command
                     continue;
                 }
 
-                $status = $statusResponse->json('data.transatcion.status') ?? 'TIP';
+                    $transactionNode = $statusResponse->json('data.transaction') ?? $statusResponse->json('data.transatcion') ?? [];
+                $status = $transactionNode['status'] ?? 'TIP';
+                $momoProviderId = $transactionNode['momo_provider_id'] ?? null;
 
-                // Update DB if status changed
-                if ($status !== $payment->status) {
-                    DB::connection('mysql')->table('payments')->where('id', $payment->id)
-                        ->update(['status' => $status, 'updated_at' => now()]);
-                    Log::info("🔄 Payment status updated", ['transactionId' => $transactionId, 'status' => $status]);
-                }
+                DB::connection('mysql')->table('payments')->where('id', $paymentRecordId)
+                    ->update([
+                        'status' => $status,
+                        'momo_provider_id' => $momoProviderId,
+                        'updated_at' => now()
+                    ]);
+
+                Log::info("🔄 Payment status updated", [
+                    'transactionId' => $transactionId,
+                    'status' => $status,
+                    'momo_provider_id' => $momoProviderId
+                ]);
+
 
                 // Normalize phone
                 $driverPhone = preg_replace('/\D/', '', $payment->driver_phone);

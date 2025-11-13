@@ -13,7 +13,7 @@ class PassengersReport extends Command
     protected $signature = 'onde:passengers-report';
     protected $description = 'Send hourly Onde passengers registration report between 08:00 and 22:00';
 
-    protected $recipients = ['0978817141','0979459414','0976290607','0980888133','0980888111'];
+      protected $recipients = ['0978817141','0979459414','0976290607','0980888133','0980888111','0980777888','0980888666','0980888114'];
  
     public function handle()
     {
